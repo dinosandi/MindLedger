@@ -25,7 +25,14 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj": {
+                "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj"
+              },
+              "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+                "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -47,6 +54,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.7, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
@@ -68,7 +79,215 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.109/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj",
+        "projectName": "Backend.Application",
+        "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj": {
+                "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.109/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj",
+        "projectName": "Backend.Domain",
+        "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.109/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+        "projectName": "Backend.Infrastructure",
+        "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\Backend.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj": {
+                "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj"
+              },
+              "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj": {
+                "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.8.58, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.109/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
