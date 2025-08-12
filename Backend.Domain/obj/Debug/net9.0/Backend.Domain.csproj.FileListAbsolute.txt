@@ -1,0 +1,5 @@
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net9.0\Backend.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net9.0\Backend.Domain.AssemblyInfoInputs.cache
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net9.0\Backend.Domain.AssemblyInfo.cs
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net9.0\Backend.Domain.csproj.CoreCompileInputs.cache
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net9.0\Backend.Domain.sourcelink.json
