@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using Backend.Domain.Entities;
 
-
-namespace Backend.Domain;
+namespace Backend.Domain.Entities;
 
 public class TaskItem
 {
@@ -17,6 +14,9 @@ public class TaskItem
     public string Priority { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+    
+    // Path file image
+    public string? ImagePath { get; set; }
 
     public User User { get; set; } = null!;
     public Category? Category { get; set; }

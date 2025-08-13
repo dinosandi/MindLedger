@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Backend.Domain.Entities;
 
-public class User : IdentityUser
+public class User : IdentityUser<Guid>
 {
-    public Guid Id { get; set; }
+
     public string Name { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;

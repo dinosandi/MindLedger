@@ -29,6 +29,9 @@
               "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj": {
                 "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Application\\Backend.Application.csproj"
               },
+              "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj": {
+                "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Domain\\Backend.Domain.csproj"
+              },
               "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\Backend.Infrastructure.csproj": {
                 "projectPath": "D:\\United Tractors\\portofolio\\Manajemen-Keuangan\\Backend.Infrastructure\\Backend.Infrastructure.csproj"
               }
@@ -62,6 +65,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.13.1, )"
             }
           },
           "imports": [

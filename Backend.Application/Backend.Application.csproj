@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Auth\Queries\" />
     <Folder Include="Dtos\" />
+    <Folder Include="TaskItems\Queries\" />
   </ItemGroup>
 
   <PropertyGroup>
