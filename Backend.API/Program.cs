@@ -1,71 +1,106 @@
-using StackExchange.Redis;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
+using Backend.API.Services;
+using Backend.Domain.Entities;
 using Backend.Infrastructure.Persistence;
+using Google.Apis.Auth;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
+using System.Text;
+using Backend.Infrastructure;
+using MediatR;
+using Backend.Application.Common.Interfaces;
+using Backend.Application;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ===== Redis =====
-var redisConfig = builder.Configuration["Redis:ConnectionString"];
+
+// Redis
 builder.Services.AddSingleton<IConnectionMultiplexer>(
-    ConnectionMultiplexer.Connect(redisConfig)
+    _ => ConnectionMultiplexer.Connect(builder.Configuration["Redis:ConnectionString"]!)
+);
+// PostgreSQL
+builder.Services.AddDbContext<AppDbContext>(opt =>
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// ===== PostgreSQL =====
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+// mapping interface ke implementasi
+builder.Services.AddScoped<IApplicationDbContext>(provider =>
+    provider.GetRequiredService<AppDbContext>()
 );
 
-// ===== OpenAPI / Swagger =====
-builder.Services.AddOpenApi();
+builder.Services.AddMediatR(typeof(AssemblyMarker).Assembly);
 
+builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<AppDbContext>());
+// Identity (tanpa password digunakan hanya untuk store user)
+builder.Services.AddIdentityCore<User>(opt =>
+{
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequireUppercase = false;
+    opt.Password.RequireDigit = false;
+    opt.Password.RequiredLength = 6;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddSignInManager<SignInManager<User>>();
+
+// JWT (untuk aplikasi kamu)
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme    = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer           = false,
+        ValidateAudience         = false,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey         = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"]!))
+    };
+})
+// (Opsional) Tambah Google jika mau pakai OAuth redirect flow
+.AddGoogle(options =>
+{
+    options.ClientId     = builder.Configuration["Authentication:Google:ClientId"]!;
+    options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
+});
+
+builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
+// (opsional) Email service kamu
+// builder.Services.AddScoped<IEmailService, EmailService>();
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructure();
+
+// Tambahkan CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173") // asal request frontend kamu
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        });
+});
 var app = builder.Build();
 
-// ===== Development pipeline =====
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();    // Add Google authentication
-    services.AddAuthentication()
-        .AddGoogle(options =>
-        {
-            options.ClientId = configuration["Authentication:Google:ClientId"];
-            options.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-        });
-    
-    // Register email service
-    services.AddScoped<IEmailService, EmailService>();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
-// ===== Contoh endpoint =====
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm",
-    "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast(
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseCors("AllowFrontend");
+app.MapControllers();
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

@@ -1,25 +1,28 @@
+using Backend.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace Backend.Infrastructure.FileStorage;
-
-public class FileStorageService : IFileStorageService
+namespace Backend.Infrastructure.FileStorage
 {
-    public async Task<string> SaveFileAsync(IFormFile file, string folderName)
+    public class FileStorageService : IFileStorageService
     {
-        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderName);
-        if (!Directory.Exists(uploadsFolder))
+        public async Task<string> SaveFileAsync(IFormFile file, string folderName)
         {
-            Directory.CreateDirectory(uploadsFolder);
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", folderName);
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // return relative path supaya bisa dipakai di frontend
+            return Path.Combine(folderName, fileName).Replace("\\", "/");
         }
-
-        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-        var filePath = Path.Combine(uploadsFolder, fileName);
-
-        using (var stream = new FileStream(filePath, FileMode.Create))
-        {
-            await file.CopyToAsync(stream);
-        }
-
-        return Path.Combine(folderName, fileName).Replace("\\", "/");
     }
 }

@@ -1,0 +1,13 @@
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\bin\Debug\net8.0\Backend.Domain.deps.json
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\bin\Debug\net8.0\Backend.Domain.dll
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\bin\Debug\net8.0\Backend.Domain.pdb
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.csproj.AssemblyReference.cache
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.AssemblyInfoInputs.cache
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.AssemblyInfo.cs
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.csproj.CoreCompileInputs.cache
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.sourcelink.json
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.dll
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\refint\Backend.Domain.dll
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\Backend.Domain.pdb
+D:\United Tractors\portofolio\Manajemen-Keuangan\Backend.Domain\obj\Debug\net8.0\ref\Backend.Domain.dll
